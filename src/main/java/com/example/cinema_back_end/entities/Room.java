@@ -1,4 +1,4 @@
-package com.example.entities;
+package com.example.cinema_back_end.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -6,21 +6,20 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Data
-@Table(name = "schedule")
+@Table(name = "room")
 @Entity
 @NoArgsConstructor
-public class Schedule {
+public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Date startDate;
-    private Date startTime;
-
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private String name;
+    private int capacity;
+    private double totalArea;
+    @ManyToOne
+    @JoinColumn(nullable = false,name = "branch_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "movie_id", nullable = false)
-    private Movie movie;
+    private Branch branch;
 }
