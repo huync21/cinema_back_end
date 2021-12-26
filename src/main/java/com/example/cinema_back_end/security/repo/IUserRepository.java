@@ -1,7 +1,7 @@
 package com.example.cinema_back_end.security.repo;
 
 
-import com.example.cinema_back_end.security.entities.User;
+import com.example.cinema_back_end.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
 package com.example.cinema_back_end.security.service;
 
 
-import com.example.cinema_back_end.security.entities.User;
+import com.example.cinema_back_end.entities.User;
 import com.example.cinema_back_end.services.IGeneralService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 

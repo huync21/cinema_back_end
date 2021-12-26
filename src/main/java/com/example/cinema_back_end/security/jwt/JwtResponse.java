@@ -6,16 +6,15 @@ import java.util.Collection;
 
 public class JwtResponse {
     private Integer id;
-    private String token;
-    private String type = "Bearer";
+    private String accessToken;
+    private String tokenType = "Bearer";
     private String username;
     private String name;
-    private Collection<? extends GrantedAuthority> roles;
 
-    public JwtResponse(String accessToken, Integer id, String username, String name, Collection<? extends GrantedAuthority> roles) {
-        this.token = accessToken;
+
+    public JwtResponse(String accessToken, Integer id, String username, String name) {
+        this.accessToken = accessToken;
         this.username = username;
-        this.roles = roles;
         this.name = name;
         this.id = id;
     }
@@ -37,19 +36,19 @@ public class JwtResponse {
     }
 
     public String getAccessToken() {
-        return token;
+        return accessToken;
     }
 
     public void setAccessToken(String accessToken) {
-        this.token = accessToken;
+        this.accessToken = accessToken;
     }
 
     public String getTokenType() {
-        return type;
+        return tokenType;
     }
 
     public void setTokenType(String tokenType) {
-        this.type = tokenType;
+        this.tokenType = tokenType;
     }
 
     public String getUsername() {
@@ -60,7 +59,5 @@ public class JwtResponse {
         this.username = username;
     }
 
-    public Collection<? extends GrantedAuthority> getRoles() {
-        return roles;
-    }
+
 }

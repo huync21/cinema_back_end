@@ -1,7 +1,7 @@
 package com.example.cinema_back_end.security.service;
 
 
-import com.example.cinema_back_end.security.entities.Role;
+import com.example.cinema_back_end.entities.Role;
 import com.example.cinema_back_end.security.repo.IRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

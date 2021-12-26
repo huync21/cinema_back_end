@@ -1,6 +1,6 @@
 package com.example.cinema_back_end.security;
 
-import com.example.cinema_back_end.security.entities.User;
+import com.example.cinema_back_end.entities.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

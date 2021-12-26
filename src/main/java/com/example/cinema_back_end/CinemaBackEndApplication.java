@@ -2,8 +2,8 @@ package com.example.cinema_back_end;
 
 import com.example.cinema_back_end.entities.Movie;
 import com.example.cinema_back_end.repositories.IMovieRepository;
-import com.example.cinema_back_end.security.entities.Role;
-import com.example.cinema_back_end.security.entities.User;
+import com.example.cinema_back_end.entities.Role;
+import com.example.cinema_back_end.entities.User;
 import com.example.cinema_back_end.security.service.IUserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

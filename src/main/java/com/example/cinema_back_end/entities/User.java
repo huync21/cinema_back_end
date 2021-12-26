@@ -1,4 +1,4 @@
-package com.example.cinema_back_end.security.entities;
+package com.example.cinema_back_end.entities;
 import lombok.Data;
 
 import javax.persistence.*;

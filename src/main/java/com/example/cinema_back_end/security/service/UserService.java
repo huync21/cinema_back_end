@@ -2,7 +2,7 @@ package com.example.cinema_back_end.security.service;
 
 
 import com.example.cinema_back_end.security.UserPrinciple;
-import com.example.cinema_back_end.security.entities.User;
+import com.example.cinema_back_end.entities.User;
 import com.example.cinema_back_end.security.repo.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

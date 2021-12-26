@@ -2,7 +2,7 @@ package com.example.cinema_back_end.security.controller;
 
 
 
-import com.example.cinema_back_end.security.entities.User;
+import com.example.cinema_back_end.entities.User;
 import com.example.cinema_back_end.security.jwt.JwtResponse;
 import com.example.cinema_back_end.security.jwt.JwtService;
 import com.example.cinema_back_end.security.service.IUserService;
@@ -41,7 +41,7 @@ public class AuthController {
             String jwt = jwtService.generateTokenLogin(authentication);
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
             User currentUser = userService.findByUsername(user.getUsername()).get();
-            return ResponseEntity.ok(new JwtResponse(jwt, currentUser.getId(), userDetails.getUsername(), currentUser.getFullName(), userDetails.getAuthorities()));
+            return ResponseEntity.ok(new JwtResponse(jwt, currentUser.getId(), userDetails.getUsername(), currentUser.getFullName()));
         }
         catch (Exception e){
             System.out.println(e);

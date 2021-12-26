@@ -1,6 +1,5 @@
 package com.example.cinema_back_end.entities;
 
-import com.example.cinema_back_end.security.entities.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
