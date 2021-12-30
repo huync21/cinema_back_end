@@ -13,4 +13,5 @@ public class ScheduleDTO {
     private BranchDTO branch;
     private RoomDTO room;
     private MovieDTO movie;
+    private Double price;
 }

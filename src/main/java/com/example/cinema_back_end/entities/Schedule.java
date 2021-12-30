@@ -19,7 +19,7 @@ public class Schedule {
     private int id;
     private LocalDate startDate;
     private LocalTime startTime;
-
+    private double price;
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "movie_id", nullable = false)

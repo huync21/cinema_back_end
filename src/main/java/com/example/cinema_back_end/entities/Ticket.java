@@ -14,7 +14,6 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String qrImageURL;
-    private double price;
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(nullable = false,name = "seat_id")

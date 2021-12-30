@@ -1,9 +1,10 @@
 package com.example.cinema_back_end;
 
-import com.example.cinema_back_end.entities.Movie;
+import com.example.cinema_back_end.entities.*;
+import com.example.cinema_back_end.repositories.IBranchRepository;
 import com.example.cinema_back_end.repositories.IMovieRepository;
-import com.example.cinema_back_end.entities.Role;
-import com.example.cinema_back_end.entities.User;
+import com.example.cinema_back_end.repositories.IRoomRepository;
+import com.example.cinema_back_end.repositories.IScheduleRepository;
 import com.example.cinema_back_end.security.service.IUserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.List;
@@ -44,6 +46,17 @@ public class CinemaBackEndApplication {
     @Autowired
     private IMovieRepository movieRepository;
 
+    @Autowired
+    private IBranchRepository branchRepository;
+
+    @Autowired
+    private IRoomRepository roomRepository;
+
+    @Autowired
+    private IScheduleRepository scheduleRepository;
+
+
+    // Do chưa có trang admin để thêm phim và lịch chiếu nên thêm tạm dữ liệu xuống db để demo
     @PostConstruct
     public void init() {
         List<User> users = userService.findAll();
@@ -64,9 +77,7 @@ public class CinemaBackEndApplication {
         List<Movie> movies = movieRepository.findAll();
         if (movies.isEmpty()) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-
-            addNewMovie("Nhóc Trùm: Nối Nghiệp Gia Đình","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_boss_baby_2_24.12.2021_1_1_1__1.jpg",
+            Movie nhocTrum = addNewMovie("Nhóc Trùm: Nối Nghiệp Gia Đình","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_boss_baby_2_24.12.2021_1_1_1__1.jpg",
                     "Nhóc trùm Ted giờ đây đã trở thành một triệu phú nổi tiếng trong khi Tim lại có một cuộc sống đơn giản bên vợ anh Carol và hai cô con gái nhỏ yêu dấu. Mỗi mùa Giáng sinh tới, cả Tina và Tabitha đều mong được gặp chú Ted",
                     "Nhóc trùm Ted giờ đây đã trở thành một triệu phú nổi tiếng trong khi Tim lại có một cuộc sống đơn giản bên vợ anh Carol và hai cô con gái nhỏ yêu dấu. Mỗi mùa Giáng sinh tới, cả Tina và Tabitha đều mong được gặp chú Ted nhưng dường như hai anh em nhà Templeton nay đã không còn gần gũi như xưa. Nhưng bất ngờ thay khi Ted lại có màn tái xuất không thể hoành tráng hơn khi đáp thẳng máy bay trực thăng tới nhà Tim trước sự ngỡ ngàng của cả gia đình.",
                     "https://scontent-sin6-3.xx.fbcdn.net/v/t1.15752-9/266631693_4703963403044964_3186366444621545031_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=PZUaW3ze910AX_dCmWG&tn=1IgLGfjKXU7KNzCP&_nc_ht=scontent-sin6-3.xx&oh=03_AVJib4-shv17dFXIA2l2TVbTcYez_uxoolsNlRFERG7z4w&oe=61E9DEA1",
@@ -75,10 +86,7 @@ public class CinemaBackEndApplication {
                     105,"https://www.youtube.com/watch?v=Lv8nL2q8yRI",
                     "Tiếng Anh với phụ đề tiếng Việt và lồng tiếng Việt",
                     "P - PHIM DÀNH CHO MỌI ĐỐI TƯỢNG",1);
-
-
-
-            addNewMovie("Venom: Đối Mặt Tử Thù","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_venom_121121_1__1.jpg",
+            Movie venom = addNewMovie("Venom: Đối Mặt Tử Thù","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_venom_121121_1__1.jpg",
                     "Siêu bom tấn #VENOM: LET THERE BE CARNAGE hứa hẹn trận chiến khốc liệt nhất giữa Venom và kẻ thù truyền kiếp, Carnage.",
                     "Siêu bom tấn #VENOM: LET THERE BE CARNAGE hứa hẹn trận chiến khốc liệt nhất giữa Venom và kẻ thù truyền kiếp, Carnage.",
                     "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/b/l/blackpink-rolling_1_.jpg",
@@ -86,7 +94,7 @@ public class CinemaBackEndApplication {
                     "Hành Động, Khoa Học Viễn Tưởng, Phiêu Lưu, Thần thoại",
                     LocalDate.parse("10/12/2021",formatter),97,"https://www.youtube.com/watch?v=EVWdzVtSh1I",
                     "Tiếng Anh - Phụ đề Tiếng Việt","C13 - PHIM CẤM KHÁN GIẢ DƯỚI 13 TUỔI",1);
-            addNewMovie("Ma Trận: Hồi Sinh","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_matrix_4_1__1.jpg",
+            Movie maTran = addNewMovie("Ma Trận: Hồi Sinh","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_matrix_4_1__1.jpg",
                     "Sau 20 năm, siêu phẩm ma trận đã trờ lại với người xem, Neo is back! Liệu đây có phải phần kết cho franchise này",
                     "Ma Trận: Hồi Sinh là phần phim tiếp theo rất được trông đợi của loạt phim “Ma Trận” đình đám, đã góp phần tái định nghĩa thể loại phim khoa học viễn tưởng. Phần phim mới nhất này đón chào sự trở lại của cặp đôi Keanu Reeves và Carrie-Anne Moss với vai diễn biểu tượng đã làm nên tên tuổi của họ, Neo và Trinity. Ngoài ra, phim còn có sự góp mặt của dàn diễn viên đầy tài năng gồm Yahya Abdul-Mateen II, Jessica Henwick, Jonathan Groff, Neil Patrick Harris, Priyanka Chopra Jonas và Christina Ricci.",
                     "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/b/l/blackpink-rolling_1_.jpg",
@@ -95,7 +103,7 @@ public class CinemaBackEndApplication {
                     148,"https://www.youtube.com/watch?v=l2UTOJC5Tbk",
                     "Tiếng Anh - Phụ đề Tiếng Việt, Phụ đề Tiếng Hàn",
                     "C18 - PHIM CẤM KHÁN GIẢ DƯỚI 18 TUỔI",1);
-            addNewMovie("Doraemon: Ôi Bạn Ơi 2","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_doremon_2_1__1.jpg",
+            Movie doremon = addNewMovie("Doraemon: Ôi Bạn Ơi 2","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_doremon_2_1__1.jpg",
                     "Một ngày nọ, Nobita vô tình tìm thấy chú gấu bông cũ, món đồ chơi chất chứa bao kỉ niệm cùng người bà đáng kính. Với khát khao “muốn gặp bà lần nữa”, Nobita đã trở về quá khứ bằng cổ máy thời gian, bất chấp sự phản đối của Doraemon",
                     "Một ngày nọ, Nobita vô tình tìm thấy chú gấu bông cũ, món đồ chơi chất chứa bao kỉ niệm cùng người bà đáng kính. Với khát khao “muốn gặp bà lần nữa”, Nobita đã trở về quá khứ bằng cổ máy thời gian, bất chấp sự phản đối của Doraemon. Dù ngạc nhiên, bà vẫn tin cậu thiếu niên lớn tướng trước mặt mình là cháu mình. Trước nguyện vọng tha thiết “mong được thấy cháu dâu một lần”, chuyến phiêu lưu của Doraemon và Nobita bắt đầu. Nobita muốn cho bà xem đám cưới của mình, nhưng đúng ngày thành hôn với Shizuka, chú rể Nobita lại trốn mất? Jaian và Suneo chạy đôn chạy đáo tìm bạn, còn Shizuka vẫn tin tưởng chờ đợi Nobita. Để thực hiện nguyện vọng của bà, đáp lại niềm tin của gia đình, bạn bà và Shizuka yêu quý, Nobita sẽ cùng Doraemon du hành vượt thời gian. Họ sẽ mang đến cho chúng ta một câu chuyện cảm động đến rơi lệ về quan hệ con người, kết nối giữa quá khứ, hiện tại và tương lai.",
                     "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/d/o/doreamon.jpg","Ryuichi Yagi, Takashi Yamazaki",
@@ -103,7 +111,7 @@ public class CinemaBackEndApplication {
                     "Hài, Hoạt Hình",LocalDate.parse("17/12/2021",formatter),
                     96,"https://youtu.be/GXnOs4Hj8MA","Tiếng Nhật - Phụ đề Tiếng Việt; Lồng tiếng",
                     "P - PHIM DÀNH CHO MỌI ĐỐI TƯỢNG",1);
-            addNewMovie("Câu Chuyện Phía Tây","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_wss_1200x1800__1.jpg",
+            Movie cauChuyenPhiaTay = addNewMovie("Câu Chuyện Phía Tây","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_wss_1200x1800__1.jpg",
                     "“Câu chuyện phía Tây” kể lại câu chuyện tình yêu kinh điển của Tony và Maria, giữa sự giằng xé của tình yêu trẻ tuổi và sự ngăn cấm, thù hằn ở thành phố NewYork những năm 1950",
                     "Được đạo diễn bởi đạo diễn gạo cội từng giành giải Oscar Steven Spielberg, cùng kịch bản bởi biên kịch từng giành giải Pulitzer Prize và giải Tony Award, Tony Kushner, “Câu chuyện phía Tây” kể lại câu chuyện tình yêu kinh điển của Tony và Maria, giữa sự giằng xé của tình yêu trẻ tuổi và sự ngăn cấm, thù hằn ở thành phố NewYork những năm 1950.",
                     "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/w/s/wss_sneak_980x448.jpg",
@@ -111,8 +119,7 @@ public class CinemaBackEndApplication {
                     "Nhạc kịch, Tình cảm",LocalDate.parse("24/12/2021",formatter),
                     156,"https://www.youtube.com/watch?v=QPvqV71P0Fo","Tiếng Anh - Phụ đề Tiếng Việt",
                     "C16 - PHIM CẤM KHÁN GIẢ DƯỚI 16 TUỔI",1);
-
-            addNewMovie("BlackPink The Movie","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_blackpink_vie_2_1__1.jpg",
+            Movie blackPink = addNewMovie("BlackPink The Movie","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_blackpink_vie_2_1__1.jpg",
                     "Nhóm nhạc nữ được yêu thích toàn cầu, BLACKPINK sẽ kỷ niệm năm thứ 5 hoạt động của nhóm với việc phát hành BLACKPINK THE MOVIE",
                     "Nhóm nhạc nữ được yêu thích toàn cầu, BLACKPINK sẽ kỷ niệm năm thứ 5 hoạt động của nhóm với việc phát hành BLACKPINK THE MOVIE, đây cũng như là món quà đặc biệt dành tặng cho các BLINK— fandom của BLACKPINK — bộ phim sẽ tái hiện một cách sống động những kỷ niệm không thể quên cùng những màn trinh diễn đầy cuồng nhiệt đúng tinh thần lễ hội.",
                     "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/b/l/blackpink-rolling_1_.jpg",
@@ -120,7 +127,7 @@ public class CinemaBackEndApplication {
                     "Phim tài liệu",LocalDate.parse("24/12/2021",formatter),99,
                     "https://www.youtube.com/watch?v=Q_rK9UlUN-Q","Tiếng Hàn - Phụ đề tiếng Việt",
                     "P - PHIM DÀNH CHO MỌI ĐỐI TƯỢNG",1);
-            addNewMovie("Người Nhện: Không Còn Nhà","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/s/n/snwh_poster_bluemontage_4x5fb_1__1.jpg"
+            Movie nguoiNhen = addNewMovie("Người Nhện: Không Còn Nhà","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/s/n/snwh_poster_bluemontage_4x5fb_1__1.jpg"
                     ,"Đa vũ trụ được mở ra, những kẻ phản diện nào sẽ trạm chán spidey, cùng đón xem nhá",
                     "Lần đầu tiên trong lịch sử điện ảnh của Người Nhện, thân phận người hàng xóm thân thiện bị lật mở, khiến trách nhiệm làm một Siêu Anh Hùng xung đột với cuộc sống bình thường và đặt người anh quan tâm nhất vào tình thế nguy hiểm. Khi anh nhờ đến giúp đỡ của Doctor Strange để khôi phục lại bí mật, phép thuật đã gây ra lỗ hổng thời không, giải phóng những ác nhân mạnh mẽ nhất từng đối đầu với Người Nhện từ mọi vũ trụ. Bây giờ, Peter sẽ phải vượt qua thử thách lớn nhất của mình, nó sẽ thay đổi không chỉ tương lai của chính anh mà còn là tương lai của cả Đa Vũ Trụ."
                     ,"https://scontent-sin6-2.xx.fbcdn.net/v/t1.15752-9/262340222_703558363874342_7416936818287635017_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_ohc=kgxsskqjaGMAX-fvrSm&_nc_ht=scontent-sin6-2.xx&oh=03_AVI4rg87OK9nazDSK_CvkOQobdA9iqv9SQW2-HA54qEKWg&oe=61ECC9EE",
@@ -129,12 +136,212 @@ public class CinemaBackEndApplication {
                     149,"https://www.youtube.com/watch?v=daHCu_jU5mQ",
                     "Tiếng Anh - Phụ đề Tiếng Việt",
                     "C13 - PHIM CẤM KHÁN GIẢ DƯỚI 13 TUỔI",1);
+
+            // Tạo mới các chi nhánh
+            List<Branch> listBranch = branchRepository.findAll();
+            if(listBranch.isEmpty()){
+                Branch branch1 = new Branch();
+                branch1.setName("HUYCINEMA Hà Đông");
+                branch1.setDiaChi("Tầng 4, Mê Linh Plaza Hà Đông, Đ. Tô Hiệu, P, Hà Đông, Hà Nội");
+                branch1.setPhoneNo("0938473829");
+                branch1.setImgURL("https://www.google.com/maps/vt/data=01jbed2RV46dgYPWYrkUjQ6y9E_UiFnVBsCgIdJWh4TGqJw3K1Qg_A4phqg094CBuRXesGa3QOof0UPRtY3zUWjOKScSn-0JuYoAlbcSKeYWV9wooMdNPaY7iL3Yd9PJjxicmzPKGds-zZRAZ9hqPRix1Trxq2vTQ7GZDWXjNJrqjn2tqL8zO0gSrZgSmarAH0jaD9Ux5tVTaZCwchq2_nNCrs2vjOU7FeXQsPRqfM3jgoYPRe43jeLkd4KGtweeXwUPgV2AeBFj9yTmjBgHSswDBrmGoJkjk-0uRIIO6LCZyMAsSW1p7-gLsUI5nJF6zWCNKmesZ3Jd3I-17zEAOz3AmLMuLkRgiFkICakIuG9B0DkjzVK2P4jN203i4DNkXTpoxKHTMv9dZG-ZoW1A9w7Q5rzSukE8Zdt3GMMei-w-THF-qL3znIiK3nQKq1_BRtnFTvhXduCYpHCo3ZvIiBz4WNKjovXd9ppG-OlRtFLYh8kYvlCKWkO0bmkBeQXoT4mqHQXm80zs_P2CB4xE3bbtoUPgaNo2-5eUcO1CPh6n3DKUdkgOIjRflGoWijmrhJO_45gguPAqZ7ZcXmY_isBf4PnWWJnzO2VAHVQwqwYIJ503CVbm3bmWoX3nVyqThCPj3fFsvjxCH-uYT0VXi3IFc02ktKuirKrsSo2rcgTcTqto0LlmkPAm34wOAr2KmMCfiqJrjKKMCn62v7WefBbU3VLI7Z8pLIgrG4l258FsyN7unVKWcVl3TVnBWp-acw9Y9AmM-nu8OzD7HSpMjJM3X28MJGj9LIIC1WsEdVL0Jhq8x9vBkY9F0RT_XTLQxbIJYa3v0B9x6KlkdOlWqTQTHvc5HQz8OV0JQYp5roWX5WcIx06_gkNOvisnf-J3aeMgzGVGs_-dZUXPwNseutiOPQXyy5NfzhZuJDOAmCJLXEAhmB6BFzFMbATI5zQ9v-D2lDvsjYq2U3Mt7Ctp6HlZVb4DGhzu7FYZkBQ11KkbQthBNKrZQ3kTiVQNNf13Osr9fIK4W6m6R3FtkxqnPshtlc-PYArGqZimsKnxgxxwt1spelowhnI55qFR9wa6UdJgeyGGRfVyfDpFiRKUkwuB7Vip?h=505&w=561&scale=1");
+                branch1 = branchRepository.save(branch1);
+                Room room1 = new Room();
+                room1.setName("Phòng 101");
+                room1.setBranch(branch1);
+                room1.setCapacity(40);
+                room1.setTotalArea(80);
+                room1.setImgURL("http://hdradio.vn/upload/hinhanh/Cinema-tong-hop/cinema-thiet-ke/Cinema-kd100/cinema-hdradio.jpg");
+                Room r1 = roomRepository.save(room1);
+                Schedule schedule1 = new Schedule();
+                schedule1.setBranch(branch1);
+                schedule1.setMovie(nguoiNhen);
+                schedule1.setRoom(r1);
+                schedule1.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule1.setStartTime(LocalTime.parse("10:15"));
+                schedule1.setPrice(70000);
+                scheduleRepository.save(schedule1);
+
+                Schedule schedule5 = new Schedule();
+                schedule5.setBranch(branch1);
+                schedule5.setMovie(nguoiNhen);
+                schedule5.setRoom(r1);
+                schedule5.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule5.setStartTime(LocalTime.parse("13:05"));
+                schedule5.setPrice(70000);
+                scheduleRepository.save(schedule5);
+
+                Schedule schedule6 = new Schedule();
+                schedule6.setBranch(branch1);
+                schedule6.setMovie(nguoiNhen);
+                schedule6.setRoom(r1);
+                schedule6.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule6.setStartTime(LocalTime.parse("14:05"));
+                schedule6.setPrice(70000);
+                scheduleRepository.save(schedule6);
+
+                Schedule schedule7 = new Schedule();
+                schedule7.setBranch(branch1);
+                schedule7.setMovie(nguoiNhen);
+                schedule7.setRoom(r1);
+                schedule7.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule7.setStartTime(LocalTime.parse("16:20"));
+                schedule7.setPrice(70000);
+                scheduleRepository.save(schedule7);
+
+
+                Schedule schedule8 = new Schedule();
+                schedule8.setBranch(branch1);
+                schedule8.setMovie(nguoiNhen);
+                schedule8.setRoom(r1);
+                schedule8.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule8.setStartTime(LocalTime.parse("16:20"));
+                schedule8.setPrice(70000);
+                scheduleRepository.save(schedule8);
+
+                Schedule schedule9 = new Schedule();
+                schedule9.setBranch(branch1);
+                schedule9.setMovie(nguoiNhen);
+                schedule9.setRoom(r1);
+                schedule9.setStartDate(LocalDate.parse("2021-01-01"));
+                schedule9.setStartTime(LocalTime.parse("16:20"));
+                schedule9.setPrice(70000);
+                scheduleRepository.save(schedule9);
+
+                Schedule schedule10 = new Schedule();
+                schedule10.setBranch(branch1);
+                schedule10.setMovie(nguoiNhen);
+                schedule10.setRoom(r1);
+                schedule10.setStartDate(LocalDate.parse("2021-01-01"));
+                schedule10.setStartTime(LocalTime.parse("19:20"));
+                schedule10.setPrice(70000);
+                scheduleRepository.save(schedule10);
+
+                Room room2 = new Room();
+                room2.setName("Phòng 202");
+                room2.setBranch(branch1);
+                room2.setCapacity(40);
+                room2.setTotalArea(80);
+                room2.setImgURL("http://hdradio.vn/upload/hinhanh/Cinema-tong-hop/cinema-thiet-ke/Cinema-kd100/cinema-hdradio.jpg");
+                Room r2 = roomRepository.save(room2);
+                Schedule schedule2 = new Schedule();
+                schedule2.setBranch(branch1);
+                schedule2.setMovie(blackPink);
+                schedule2.setRoom(r2);
+                schedule2.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule2.setStartTime(LocalTime.parse("10:15"));
+                schedule2.setPrice(70000);
+                scheduleRepository.save(schedule2);
+
+                Room room3 = new Room();
+                room3.setName("Phòng 303");
+                room3.setBranch(branch1);
+                room3.setCapacity(40);
+                room3.setTotalArea(80);
+                room3.setImgURL("http://hdradio.vn/upload/hinhanh/Cinema-tong-hop/cinema-thiet-ke/Cinema-kd100/cinema-hdradio.jpg");
+                Room r3 = roomRepository.save(room3);
+                Schedule schedule3 = new Schedule();
+                schedule3.setBranch(branch1);
+                schedule3.setMovie(venom);
+                schedule3.setRoom(r3);
+                schedule3.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule3.setStartTime(LocalTime.parse("10:15"));
+                schedule3.setPrice(70000);
+                scheduleRepository.save(schedule3);
+
+                Room room4 = new Room();
+                room4.setName("Phòng 404");
+                room4.setBranch(branch1);
+                room4.setCapacity(40);
+                room4.setTotalArea(80);
+                room4.setImgURL("http://hdradio.vn/upload/hinhanh/Cinema-tong-hop/cinema-thiet-ke/Cinema-kd100/cinema-hdradio.jpg");
+                Room r4 = roomRepository.save(room4);
+
+                Branch branch2 = new Branch();
+                branch2.setName("HUYCINEMA Thủ Đức");
+                branch2.setDiaChi("216 Đ. Võ Văn Ngân, Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh");
+                branch2.setPhoneNo("1900 6017");
+                branch2.setImgURL("https://www.google.com/maps/vt/data=TZeUNl_xwzxmDpHYWKkbDv_7amlZzoi4kaRvCEATRTtis3KKxsH0tcFvyiR7Gjt4G3NufaHQaPOcn3pMPNABNgbW2ZoipmmEo6PKNCFhm8CuQbuASrxxaRyviyUG78mD1AVOf1D2fJxIjyEmphS20Wo9dgRW8TJBXekAhiaiGu8g");
+                branch2 = branchRepository.save(branch2);
+                room1.setBranch(branch2);
+                room2.setBranch(branch2);
+                room3.setBranch(branch2);
+                Room r5 = roomRepository.save(room1);
+                Room r6 = roomRepository.save(room2);
+                Room r7 = roomRepository.save(room3);
+                Schedule schedule11 = new Schedule();
+                schedule11.setBranch(branch2);
+                schedule11.setMovie(nguoiNhen);
+                schedule11.setRoom(r5);
+                schedule11.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule11.setStartTime(LocalTime.parse("10:15"));
+                schedule11.setPrice(70000);
+                scheduleRepository.save(schedule11);
+
+
+                Branch branch3 = new Branch();
+                branch3.setName("HUYCINEMA Ba Đình");
+                branch3.setDiaChi("29 P. Liễu Giai, Ngọc Khánh, Ba Đình, Hà Nội 100000");
+                branch3.setPhoneNo("1900 6017");
+                branch3.setImgURL("https://www.google.com/maps/vt/data=yhfVddn9tdyWNfmuCzyFU_TR8pm30CLi5oeQTFnFB7qV90WT3OL_ETKkEjQjn3j6zlMuz-VSN_AgZRDCghvF5y2JCVivnwi-sOuKKWT4bSEOf0FZ2-nwoNYSRZH--yH_VpazHsQ9huADdpfR_j3ZnNMEfU_hwJXzSef8AcxHTcqA");
+                branch3 = branchRepository.save(branch3);
+                room1.setBranch(branch3);
+                room2.setBranch(branch3);
+                room3.setBranch(branch3);
+                room4.setBranch(branch3);
+                Room r8= roomRepository.save(room1);
+                Room r9 = roomRepository.save(room2);
+                Room r10 = roomRepository.save(room3);
+                Room r11 = roomRepository.save(room4);
+                Schedule schedule12 = new Schedule();
+                schedule12.setBranch(branch3);
+                schedule12.setMovie(nguoiNhen);
+                schedule12.setRoom(r8);
+                schedule12.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule12.setStartTime(LocalTime.parse("10:15"));
+                schedule12.setPrice(70000);
+                scheduleRepository.save(schedule12);
+                Schedule schedule13 = new Schedule();
+                schedule13.setBranch(branch3);
+                schedule13.setMovie(blackPink);
+                schedule13.setRoom(r9);
+                schedule13.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule13.setStartTime(LocalTime.parse("22:15"));
+                schedule13.setPrice(70000);
+                scheduleRepository.save(schedule12);
+
+                Branch branch4 = new Branch();
+                branch4.setName("HUYCINEMA Phạm Hùng");
+                branch4.setDiaChi("Phạm Hùng, Mỹ Đình, Nam Từ Liêm, Hà Nội");
+                branch4.setPhoneNo("1900 6017");
+                branch4.setImgURL("https://www.google.com/maps/vt/data=YVeSKtAT_T4Tie7xjlIh8lVV_CPmpsr36ayQG-gTEGBZtEKRSSUuLnFbj1HBbGxrYJUS3T3ib8llvuVuiSE85HJYK54JW899mhPMP0BWDwBch-utK9g-_kUPd2rsaEpMLmwUd3R9SO67_S6eUEcY0SfqeXAfB2p9NizW8eGSgD63");
+                branch4 = branchRepository.save(branch4);
+                room1.setBranch(branch4);
+                room2.setBranch(branch4);
+                room3.setBranch(branch4);
+                room4.setBranch(branch4);
+                Room r12 = roomRepository.save(room1);
+                roomRepository.save(room2);
+                roomRepository.save(room3);
+                roomRepository.save(room4);
+
+                Schedule schedule14 = new Schedule();
+                schedule14.setBranch(branch4);
+                schedule14.setMovie(nguoiNhen);
+                schedule14.setRoom(r12);
+                schedule14.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule14.setStartTime(LocalTime.parse("10:15"));
+                schedule14.setPrice(70000);
+                scheduleRepository.save(schedule14);
+            }
         }
+
+
 
 
     }
 
-    public void addNewMovie(
+    public Movie addNewMovie(
             String name,
             String smallImageURl,
             String shortDescription,
@@ -164,8 +371,8 @@ public class CinemaBackEndApplication {
         movie.setLanguage(language);
         movie.setRated(rated);
         movie.setIsShowing(isShowing);
-        movieRepository.save(movie);
-
+        movie = movieRepository.save(movie);
+        return movie;
     }
 
     public static void main(String[] args) {

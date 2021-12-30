@@ -6,7 +6,6 @@ import lombok.Data;
 public class TicketDTO {
     private int id;
     private String qrImageURL;
-    private double price;
     private ScheduleDTO schedule;
     private SeatDTO seat;
 }

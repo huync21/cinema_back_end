@@ -18,6 +18,10 @@ public class Room {
     private String name;
     private int capacity;
     private double totalArea;
+
+    @Column(length = 1000)
+    private String imgURL;
+
     @ManyToOne
     @JoinColumn(nullable = false,name = "branch_id")
     @OnDelete(action = OnDeleteAction.CASCADE)

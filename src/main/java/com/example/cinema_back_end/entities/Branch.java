@@ -13,6 +13,7 @@ public class Branch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(length = 2000)
     private String imgURL;
     private String name;
     private String diaChi;
