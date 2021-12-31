@@ -157,7 +157,7 @@ public class CinemaBackEndApplication {
                 schedule1.setBranch(branch1);
                 schedule1.setMovie(nguoiNhen);
                 schedule1.setRoom(r1);
-                schedule1.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule1.setStartDate(LocalDate.parse("2021-01-05"));
                 schedule1.setStartTime(LocalTime.parse("10:15"));
                 schedule1.setPrice(70000);
                 scheduleRepository.save(schedule1);
@@ -166,7 +166,7 @@ public class CinemaBackEndApplication {
                 schedule5.setBranch(branch1);
                 schedule5.setMovie(nguoiNhen);
                 schedule5.setRoom(r1);
-                schedule5.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule5.setStartDate(LocalDate.parse("2021-01-05"));
                 schedule5.setStartTime(LocalTime.parse("13:05"));
                 schedule5.setPrice(70000);
                 scheduleRepository.save(schedule5);
@@ -175,7 +175,7 @@ public class CinemaBackEndApplication {
                 schedule6.setBranch(branch1);
                 schedule6.setMovie(nguoiNhen);
                 schedule6.setRoom(r1);
-                schedule6.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule6.setStartDate(LocalDate.parse("2021-01-05"));
                 schedule6.setStartTime(LocalTime.parse("14:05"));
                 schedule6.setPrice(70000);
                 scheduleRepository.save(schedule6);
@@ -184,7 +184,7 @@ public class CinemaBackEndApplication {
                 schedule7.setBranch(branch1);
                 schedule7.setMovie(nguoiNhen);
                 schedule7.setRoom(r1);
-                schedule7.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule7.setStartDate(LocalDate.parse("2021-01-05"));
                 schedule7.setStartTime(LocalTime.parse("16:20"));
                 schedule7.setPrice(70000);
                 scheduleRepository.save(schedule7);
@@ -194,7 +194,7 @@ public class CinemaBackEndApplication {
                 schedule8.setBranch(branch1);
                 schedule8.setMovie(nguoiNhen);
                 schedule8.setRoom(r1);
-                schedule8.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule8.setStartDate(LocalDate.parse("2021-01-05"));
                 schedule8.setStartTime(LocalTime.parse("16:20"));
                 schedule8.setPrice(70000);
                 scheduleRepository.save(schedule8);
@@ -203,7 +203,7 @@ public class CinemaBackEndApplication {
                 schedule9.setBranch(branch1);
                 schedule9.setMovie(nguoiNhen);
                 schedule9.setRoom(r1);
-                schedule9.setStartDate(LocalDate.parse("2021-01-01"));
+                schedule9.setStartDate(LocalDate.parse("2021-01-06"));
                 schedule9.setStartTime(LocalTime.parse("16:20"));
                 schedule9.setPrice(70000);
                 scheduleRepository.save(schedule9);
@@ -212,10 +212,19 @@ public class CinemaBackEndApplication {
                 schedule10.setBranch(branch1);
                 schedule10.setMovie(nguoiNhen);
                 schedule10.setRoom(r1);
-                schedule10.setStartDate(LocalDate.parse("2021-01-01"));
+                schedule10.setStartDate(LocalDate.parse("2021-01-06"));
                 schedule10.setStartTime(LocalTime.parse("19:20"));
                 schedule10.setPrice(70000);
                 scheduleRepository.save(schedule10);
+
+                Schedule schedule = new Schedule();
+                schedule.setBranch(branch1);
+                schedule.setMovie(blackPink);
+                schedule.setRoom(r1);
+                schedule.setStartDate(LocalDate.parse("2021-01-05"));
+                schedule.setStartTime(LocalTime.parse("19:15"));
+                schedule.setPrice(70000);
+                scheduleRepository.save(schedule);
 
                 Room room2 = new Room();
                 room2.setName("Phòng 202");
@@ -228,7 +237,7 @@ public class CinemaBackEndApplication {
                 schedule2.setBranch(branch1);
                 schedule2.setMovie(blackPink);
                 schedule2.setRoom(r2);
-                schedule2.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule2.setStartDate(LocalDate.parse("2021-01-05"));
                 schedule2.setStartTime(LocalTime.parse("10:15"));
                 schedule2.setPrice(70000);
                 scheduleRepository.save(schedule2);
@@ -244,7 +253,7 @@ public class CinemaBackEndApplication {
                 schedule3.setBranch(branch1);
                 schedule3.setMovie(venom);
                 schedule3.setRoom(r3);
-                schedule3.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule3.setStartDate(LocalDate.parse("2021-01-05"));
                 schedule3.setStartTime(LocalTime.parse("10:15"));
                 schedule3.setPrice(70000);
                 scheduleRepository.save(schedule3);
@@ -273,7 +282,7 @@ public class CinemaBackEndApplication {
                 schedule11.setBranch(branch2);
                 schedule11.setMovie(nguoiNhen);
                 schedule11.setRoom(r5);
-                schedule11.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule11.setStartDate(LocalDate.parse("2021-01-05"));
                 schedule11.setStartTime(LocalTime.parse("10:15"));
                 schedule11.setPrice(70000);
                 scheduleRepository.save(schedule11);
@@ -297,7 +306,7 @@ public class CinemaBackEndApplication {
                 schedule12.setBranch(branch3);
                 schedule12.setMovie(nguoiNhen);
                 schedule12.setRoom(r8);
-                schedule12.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule12.setStartDate(LocalDate.parse("2021-01-05"));
                 schedule12.setStartTime(LocalTime.parse("10:15"));
                 schedule12.setPrice(70000);
                 scheduleRepository.save(schedule12);
@@ -305,7 +314,7 @@ public class CinemaBackEndApplication {
                 schedule13.setBranch(branch3);
                 schedule13.setMovie(blackPink);
                 schedule13.setRoom(r9);
-                schedule13.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule13.setStartDate(LocalDate.parse("2021-01-05"));
                 schedule13.setStartTime(LocalTime.parse("22:15"));
                 schedule13.setPrice(70000);
                 scheduleRepository.save(schedule12);
@@ -329,7 +338,7 @@ public class CinemaBackEndApplication {
                 schedule14.setBranch(branch4);
                 schedule14.setMovie(nguoiNhen);
                 schedule14.setRoom(r12);
-                schedule14.setStartDate(LocalDate.parse("2021-12-30"));
+                schedule14.setStartDate(LocalDate.parse("2021-01-05"));
                 schedule14.setStartTime(LocalTime.parse("10:15"));
                 schedule14.setPrice(70000);
                 scheduleRepository.save(schedule14);
