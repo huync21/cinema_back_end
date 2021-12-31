@@ -242,6 +242,16 @@ public class CinemaBackEndApplication {
                 schedule2.setPrice(70000);
                 scheduleRepository.save(schedule2);
 
+                Schedule schedule77 = new Schedule();
+                schedule77.setBranch(branch1);
+                schedule77.setMovie(nguoiNhen);
+                schedule77.setRoom(r2);
+                schedule77.setStartDate(LocalDate.parse("2021-01-05"));
+                schedule77.setStartTime(LocalTime.parse("16:20"));
+                schedule77.setPrice(70000);
+                scheduleRepository.save(schedule77);
+
+
                 Room room3 = new Room();
                 room3.setName("Phòng 303");
                 room3.setBranch(branch1);
@@ -258,6 +268,15 @@ public class CinemaBackEndApplication {
                 schedule3.setPrice(70000);
                 scheduleRepository.save(schedule3);
 
+                Schedule schedule88 = new Schedule();
+                schedule88.setBranch(branch1);
+                schedule88.setMovie(nguoiNhen);
+                schedule88.setRoom(r3);
+                schedule88.setStartDate(LocalDate.parse("2021-01-05"));
+                schedule88.setStartTime(LocalTime.parse("16:20"));
+                schedule88.setPrice(70000);
+                scheduleRepository.save(schedule88);
+
                 Room room4 = new Room();
                 room4.setName("Phòng 404");
                 room4.setBranch(branch1);
@@ -265,6 +284,15 @@ public class CinemaBackEndApplication {
                 room4.setTotalArea(80);
                 room4.setImgURL("http://hdradio.vn/upload/hinhanh/Cinema-tong-hop/cinema-thiet-ke/Cinema-kd100/cinema-hdradio.jpg");
                 Room r4 = roomRepository.save(room4);
+
+                Schedule schedule99 = new Schedule();
+                schedule99.setBranch(branch1);
+                schedule99.setMovie(nguoiNhen);
+                schedule99.setRoom(r4);
+                schedule99.setStartDate(LocalDate.parse("2021-01-05"));
+                schedule99.setStartTime(LocalTime.parse("16:20"));
+                schedule99.setPrice(70000);
+                scheduleRepository.save(schedule99);
 
                 Branch branch2 = new Branch();
                 branch2.setName("HUYCINEMA Thủ Đức");

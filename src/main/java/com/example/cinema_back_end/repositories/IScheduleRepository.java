@@ -12,7 +12,10 @@ import java.util.List;
 public interface IScheduleRepository extends JpaRepository<Schedule, Integer> {
     @Query("SELECT DISTINCT s.startTime FROM Schedule s WHERE s.movie.id=:movieId AND s.branch.id" +
             "= :branchId AND s.startDate=:startDate")
-    List<LocalTime> getStartTimeByMovie_IdAAndBranch_IdAndStartDate(@Param("movieId") Integer movieId
+    List<LocalTime> getStartTimeByMovie_IdAndBranch_IdAndStartDate(@Param("movieId") Integer movieId
             , @Param("branchId") Integer branchId
             , @Param("startDate") LocalDate startDate);
+
+    List<Schedule> getSchedulesByMovie_IdAndBranch_IdAndStartDateAndStartTimeAndRoom_Id(Integer movieId,Integer branchId
+    , LocalDate startDate,LocalTime startTime,Integer roomId);
 }

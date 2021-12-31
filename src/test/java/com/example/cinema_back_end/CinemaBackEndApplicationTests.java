@@ -13,7 +13,7 @@ class CinemaBackEndApplicationTests {
     private IScheduleRepository scheduleRepository;
     @Test
     void contextLoads() {
-        scheduleRepository.getStartTimeByMovie_IdAAndBranch_IdAndStartDate(7,1, LocalDate.parse("2021-01-05"))
+        scheduleRepository.getStartTimeByMovie_IdAndBranch_IdAndStartDate(7,1, LocalDate.parse("2021-01-05"))
                 .stream().forEach(System.out::println);
     }
 
