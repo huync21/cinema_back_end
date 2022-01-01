@@ -8,4 +8,5 @@ public class TicketDTO {
     private String qrImageURL;
     private ScheduleDTO schedule;
     private SeatDTO seat;
+    private BillDTO bill;
 }

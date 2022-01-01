@@ -22,7 +22,7 @@ public class Ticket {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(nullable = false,name = "schedule_id")
     private Schedule schedule;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="bill_id")
     private Bill bill;

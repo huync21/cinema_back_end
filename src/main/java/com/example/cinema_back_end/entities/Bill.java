@@ -8,6 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -18,7 +19,7 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @CreatedDate
-    private LocalDate createdDate;
+    private LocalDateTime createdTime;
     @ManyToOne
     @JoinColumn(nullable = false,name="user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
