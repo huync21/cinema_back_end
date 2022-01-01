@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface IMovieService {
     List<MovieDTO> findAllShowingMovies();
+    MovieDTO getById(Integer movieId);
 }

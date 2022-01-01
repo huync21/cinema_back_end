@@ -25,4 +25,9 @@ public class MovieService implements IMovieService{
                 .map(movie -> modelMapper.map(movie, MovieDTO.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public MovieDTO getById(Integer movieId) {
+        return modelMapper.map(movieRepository.getById(movieId),MovieDTO.class);
+    }
 }
