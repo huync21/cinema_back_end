@@ -58,39 +58,39 @@ public class CinemaBackEndApplication {
     // Do chưa có trang admin để thêm phim và lịch chiếu nên thêm tạm dữ liệu xuống db để demo
     @PostConstruct
     public void init() {
-        Room room = roomRepository.findById(4).get();
-
-        for(int i=1;i<=8;i++){
-            Seat seat = new Seat();
-            seat.setName("A"+i);
-            seat.setRoom(room);
-            seatRepository.save(seat);
-        }
-
-        for(int i=1;i<=8;i++){
-            Seat seat = new Seat();
-            seat.setName("B"+i);
-            seat.setRoom(room);
-            seatRepository.save(seat);
-        }
-        for(int i=1;i<=8;i++){
-            Seat seat = new Seat();
-            seat.setName("C"+i);
-            seat.setRoom(room);
-            seatRepository.save(seat);
-        }
-        for(int i=1;i<=8;i++){
-            Seat seat = new Seat();
-            seat.setName("D"+i);
-            seat.setRoom(room);
-            seatRepository.save(seat);
-        }
-        for(int i=1;i<=8;i++){
-            Seat seat = new Seat();
-            seat.setName("E"+i);
-            seat.setRoom(room);
-            seatRepository.save(seat);
-        }
+//        Room room = roomRepository.findById(4).get();
+//
+//        for(int i=1;i<=8;i++){
+//            Seat seat = new Seat();
+//            seat.setName("A"+i);
+//            seat.setRoom(room);
+//            seatRepository.save(seat);
+//        }
+//
+//        for(int i=1;i<=8;i++){
+//            Seat seat = new Seat();
+//            seat.setName("B"+i);
+//            seat.setRoom(room);
+//            seatRepository.save(seat);
+//        }
+//        for(int i=1;i<=8;i++){
+//            Seat seat = new Seat();
+//            seat.setName("C"+i);
+//            seat.setRoom(room);
+//            seatRepository.save(seat);
+//        }
+//        for(int i=1;i<=8;i++){
+//            Seat seat = new Seat();
+//            seat.setName("D"+i);
+//            seat.setRoom(room);
+//            seatRepository.save(seat);
+//        }
+//        for(int i=1;i<=8;i++){
+//            Seat seat = new Seat();
+//            seat.setName("E"+i);
+//            seat.setRoom(room);
+//            seatRepository.save(seat);
+//        }
         List<User> users = userService.findAll();
 
         if (users.isEmpty()) {
