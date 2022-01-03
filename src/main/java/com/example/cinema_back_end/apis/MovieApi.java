@@ -25,4 +25,9 @@ public class MovieApi {
     public MovieDTO getMovieById(@RequestParam Integer movieId){
         return movieService.getById(movieId);
     }
+
+    @GetMapping("/showing/search")
+    public List<MovieDTO> findAllShowingMoviesByName(@RequestParam String name){
+        return movieService.findAllShowingMoviesByName(name);
+    }
 }

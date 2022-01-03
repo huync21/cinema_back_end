@@ -30,4 +30,11 @@ public class MovieService implements IMovieService{
     public MovieDTO getById(Integer movieId) {
         return modelMapper.map(movieRepository.getById(movieId),MovieDTO.class);
     }
+
+    @Override
+    public List<MovieDTO> findAllShowingMoviesByName(String keyword) {
+        return movieRepository.findMoviesByIsShowingAndNameContaining(1,keyword)
+                .stream().map(movie -> modelMapper.map(movie,MovieDTO.class))
+                .collect(Collectors.toList());
+    }
 }
