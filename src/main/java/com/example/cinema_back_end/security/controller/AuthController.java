@@ -47,7 +47,7 @@ public class AuthController {
         catch (Exception e){
             System.out.println(e);
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Lỗi đăng nhập");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Sai email hoặc mật khẩu!");
     }
 
     @PostMapping("/register")
