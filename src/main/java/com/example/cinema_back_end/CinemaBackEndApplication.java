@@ -58,7 +58,7 @@ public class CinemaBackEndApplication {
     // Do chưa có trang admin để thêm phim và lịch chiếu nên thêm tạm dữ liệu xuống db để demo
     @PostConstruct
     public void init() {
-        Room room = roomRepository.findById(1).get();
+        Room room = roomRepository.findById(2).get();
 
         for(int i=1;i<=8;i++){
             Seat seat = new Seat();
