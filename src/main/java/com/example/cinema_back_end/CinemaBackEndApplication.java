@@ -58,39 +58,39 @@ public class CinemaBackEndApplication {
     // Do chưa có trang admin để thêm phim và lịch chiếu nên thêm tạm dữ liệu xuống db để demo
     @PostConstruct
     public void init() {
-//        Room room = roomRepository.findById(4).get();
-//
-//        for(int i=1;i<=8;i++){
-//            Seat seat = new Seat();
-//            seat.setName("A"+i);
-//            seat.setRoom(room);
-//            seatRepository.save(seat);
-//        }
-//
-//        for(int i=1;i<=8;i++){
-//            Seat seat = new Seat();
-//            seat.setName("B"+i);
-//            seat.setRoom(room);
-//            seatRepository.save(seat);
-//        }
-//        for(int i=1;i<=8;i++){
-//            Seat seat = new Seat();
-//            seat.setName("C"+i);
-//            seat.setRoom(room);
-//            seatRepository.save(seat);
-//        }
-//        for(int i=1;i<=8;i++){
-//            Seat seat = new Seat();
-//            seat.setName("D"+i);
-//            seat.setRoom(room);
-//            seatRepository.save(seat);
-//        }
-//        for(int i=1;i<=8;i++){
-//            Seat seat = new Seat();
-//            seat.setName("E"+i);
-//            seat.setRoom(room);
-//            seatRepository.save(seat);
-//        }
+        Room room = roomRepository.findById(1).get();
+
+        for(int i=1;i<=8;i++){
+            Seat seat = new Seat();
+            seat.setName("A"+i);
+            seat.setRoom(room);
+            seatRepository.save(seat);
+        }
+
+        for(int i=1;i<=8;i++){
+            Seat seat = new Seat();
+            seat.setName("B"+i);
+            seat.setRoom(room);
+            seatRepository.save(seat);
+        }
+        for(int i=1;i<=8;i++){
+            Seat seat = new Seat();
+            seat.setName("C"+i);
+            seat.setRoom(room);
+            seatRepository.save(seat);
+        }
+        for(int i=1;i<=8;i++){
+            Seat seat = new Seat();
+            seat.setName("D"+i);
+            seat.setRoom(room);
+            seatRepository.save(seat);
+        }
+        for(int i=1;i<=8;i++){
+            Seat seat = new Seat();
+            seat.setName("E"+i);
+            seat.setRoom(room);
+            seatRepository.save(seat);
+        }
         List<User> users = userService.findAll();
 
         if (users.isEmpty()) {
@@ -115,7 +115,7 @@ public class CinemaBackEndApplication {
                     "https://scontent-sin6-3.xx.fbcdn.net/v/t1.15752-9/266631693_4703963403044964_3186366444621545031_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=PZUaW3ze910AX_dCmWG&tn=1IgLGfjKXU7KNzCP&_nc_ht=scontent-sin6-3.xx&oh=03_AVJib4-shv17dFXIA2l2TVbTcYez_uxoolsNlRFERG7z4w&oe=61E9DEA1",
                     "Tom McGrath","Amy Sedaris, Jeff Goldblum, James Marsden",
                     "Hoạt Hình",LocalDate.parse("24/12/2021",formatter),
-                    105,"https://www.youtube.com/watch?v=Lv8nL2q8yRI",
+                    105,"https://www.youtube.com/embed/Lv8nL2q8yRI",
                     "Tiếng Anh với phụ đề tiếng Việt và lồng tiếng Việt",
                     "P - PHIM DÀNH CHO MỌI ĐỐI TƯỢNG",1);
             Movie venom = addNewMovie("Venom: Đối Mặt Tử Thù","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_venom_121121_1__1.jpg",
@@ -124,7 +124,7 @@ public class CinemaBackEndApplication {
                     "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/b/l/blackpink-rolling_1_.jpg",
                     "Andy Serkis","Tom Hardy, Michelle Williams, Woody Harrelson, Naomie Harris",
                     "Hành Động, Khoa Học Viễn Tưởng, Phiêu Lưu, Thần thoại",
-                    LocalDate.parse("10/12/2021",formatter),97,"https://www.youtube.com/watch?v=EVWdzVtSh1I",
+                    LocalDate.parse("10/12/2021",formatter),97,"https://www.youtube.com/embed/EVWdzVtSh1I",
                     "Tiếng Anh - Phụ đề Tiếng Việt","C13 - PHIM CẤM KHÁN GIẢ DƯỚI 13 TUỔI",1);
             Movie maTran = addNewMovie("Ma Trận: Hồi Sinh","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_matrix_4_1__1.jpg",
                     "Sau 20 năm, siêu phẩm ma trận đã trờ lại với người xem, Neo is back! Liệu đây có phải phần kết cho franchise này",
@@ -132,7 +132,7 @@ public class CinemaBackEndApplication {
                     "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/b/l/blackpink-rolling_1_.jpg",
                     "Lana Wachowski","Keanu Reeves, Carrie-Anne Moss, Yahya Abdul-Mateen II, Jessica Henwick, Jonathan Groff, Neil Patrick Harris, Priyanka Chopra Jonas và Christina Ricci",
                     "Hành Động, Khoa Học Viễn Tưởng",LocalDate.parse("24/12/2021",formatter),
-                    148,"https://www.youtube.com/watch?v=l2UTOJC5Tbk",
+                    148,"https://www.youtube.com/embed/l2UTOJC5Tbk",
                     "Tiếng Anh - Phụ đề Tiếng Việt, Phụ đề Tiếng Hàn",
                     "C18 - PHIM CẤM KHÁN GIẢ DƯỚI 18 TUỔI",1);
             Movie doremon = addNewMovie("Doraemon: Ôi Bạn Ơi 2","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_doremon_2_1__1.jpg",
@@ -141,7 +141,7 @@ public class CinemaBackEndApplication {
                     "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/d/o/doreamon.jpg","Ryuichi Yagi, Takashi Yamazaki",
                     "Wasabi Mizuta, Megumi Oohara, Yumi Kakazu, Subaru Kimura, Tomokazu Seki",
                     "Hài, Hoạt Hình",LocalDate.parse("17/12/2021",formatter),
-                    96,"https://youtu.be/GXnOs4Hj8MA","Tiếng Nhật - Phụ đề Tiếng Việt; Lồng tiếng",
+                    96,"https://www.youtube.com/embed/GXnOs4Hj8MA","Tiếng Nhật - Phụ đề Tiếng Việt; Lồng tiếng",
                     "P - PHIM DÀNH CHO MỌI ĐỐI TƯỢNG",1);
             Movie cauChuyenPhiaTay = addNewMovie("Câu Chuyện Phía Tây","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_wss_1200x1800__1.jpg",
                     "“Câu chuyện phía Tây” kể lại câu chuyện tình yêu kinh điển của Tony và Maria, giữa sự giằng xé của tình yêu trẻ tuổi và sự ngăn cấm, thù hằn ở thành phố NewYork những năm 1950",
@@ -149,7 +149,7 @@ public class CinemaBackEndApplication {
                     "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/w/s/wss_sneak_980x448.jpg",
                     "Steven Spielberg","Ansel Elgort, Rachel Zegler, Ariana DeBose, David Alvarez, Mike Faist, Josh Andrés Rivera, Ana Isabelle, Corey Stoll, Brian d’Arcy James, Rita Moreno",
                     "Nhạc kịch, Tình cảm",LocalDate.parse("24/12/2021",formatter),
-                    156,"https://www.youtube.com/watch?v=QPvqV71P0Fo","Tiếng Anh - Phụ đề Tiếng Việt",
+                    156,"https://www.youtube.com/embed/QPvqV71P0Fo","Tiếng Anh - Phụ đề Tiếng Việt",
                     "C16 - PHIM CẤM KHÁN GIẢ DƯỚI 16 TUỔI",1);
             Movie blackPink = addNewMovie("BlackPink The Movie","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_blackpink_vie_2_1__1.jpg",
                     "Nhóm nhạc nữ được yêu thích toàn cầu, BLACKPINK sẽ kỷ niệm năm thứ 5 hoạt động của nhóm với việc phát hành BLACKPINK THE MOVIE",
@@ -157,7 +157,7 @@ public class CinemaBackEndApplication {
                     "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/b/l/blackpink-rolling_1_.jpg",
                     "Su Yee Jung, Oh Yoon-Dong","JISOO, JENNIE, ROSÉ, LISA",
                     "Phim tài liệu",LocalDate.parse("24/12/2021",formatter),99,
-                    "https://www.youtube.com/watch?v=Q_rK9UlUN-Q","Tiếng Hàn - Phụ đề tiếng Việt",
+                    "https://www.youtube.com/embed/Q_rK9UlUN-Q","Tiếng Hàn - Phụ đề tiếng Việt",
                     "P - PHIM DÀNH CHO MỌI ĐỐI TƯỢNG",1);
             Movie nguoiNhen = addNewMovie("Người Nhện: Không Còn Nhà","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/s/n/snwh_poster_bluemontage_4x5fb_1__1.jpg"
                     ,"Đa vũ trụ được mở ra, những kẻ phản diện nào sẽ trạm chán spidey, cùng đón xem nhá",
@@ -165,7 +165,7 @@ public class CinemaBackEndApplication {
                     ,"https://scontent-sin6-2.xx.fbcdn.net/v/t1.15752-9/262340222_703558363874342_7416936818287635017_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_ohc=kgxsskqjaGMAX-fvrSm&_nc_ht=scontent-sin6-2.xx&oh=03_AVI4rg87OK9nazDSK_CvkOQobdA9iqv9SQW2-HA54qEKWg&oe=61ECC9EE",
                     "Jon Watts","Tom Holland, Zendaya, Benedict Cumberbatch, Jacob Batalon, Jon Favreau","Hành Động, Phiêu Lưu",
                     LocalDate.parse("17/12/2021",formatter),
-                    149,"https://www.youtube.com/watch?v=daHCu_jU5mQ",
+                    149,"https://www.youtube.com/embed/daHCu_jU5mQ",
                     "Tiếng Anh - Phụ đề Tiếng Việt",
                     "C13 - PHIM CẤM KHÁN GIẢ DƯỚI 13 TUỔI",1);
 
