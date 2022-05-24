@@ -92,6 +92,7 @@ public class CinemaBackEndApplication {
             seat.setRoom(room);
             seatRepository.save(seat);
         }
+
         List<User> users = userService.findAll();
 
         if (users.isEmpty()) {
