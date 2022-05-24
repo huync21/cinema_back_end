@@ -59,53 +59,53 @@ public class CinemaBackEndApplication {
     @PostConstruct
     public void init() {
         // Chạy 1 lần đầu app rồi bỏ comment đoạn này rồi chạy lại để add data ghế ngồi cho phòng 1
-//        Room room = roomRepository.findById(1).get();
-//
-//        for(int i=1;i<=8;i++){
-//            Seat seat = new Seat();
-//            seat.setName("A"+i);
-//            seat.setRoom(room);
-//            seatRepository.save(seat);
-//        }
-//
-//        for(int i=1;i<=8;i++){
-//            Seat seat = new Seat();
-//            seat.setName("B"+i);
-//            seat.setRoom(room);
-//            seatRepository.save(seat);
-//        }
-//        for(int i=1;i<=8;i++){
-//            Seat seat = new Seat();
-//            seat.setName("C"+i);
-//            seat.setRoom(room);
-//            seatRepository.save(seat);
-//        }
-//        for(int i=1;i<=8;i++){
-//            Seat seat = new Seat();
-//            seat.setName("D"+i);
-//            seat.setRoom(room);
-//            seatRepository.save(seat);
-//        }
-//        for(int i=1;i<=8;i++){
-//            Seat seat = new Seat();
-//            seat.setName("E"+i);
-//            seat.setRoom(room);
-//            seatRepository.save(seat);
-//        }
-//        List<User> users = userService.findAll();
-//
-//        if (users.isEmpty()) {
-//            User admin = new User();
-//            Set<Role> roles = new HashSet<>();
-//            Role roleAdmin = new Role();
-//            roleAdmin.setName("ROLE_CLIENT");
-//            roles.add(roleAdmin);
-//            admin.setFullName("Cong Huy");
-//            admin.setUsername("huync21@gmail.com");
-//            admin.setPassword("123");
-//            admin.setRoles(roles);
-//            userService.save(admin);
-//        }
+        Room room = roomRepository.findById(1).get();
+
+        for(int i=1;i<=8;i++){
+            Seat seat = new Seat();
+            seat.setName("A"+i);
+            seat.setRoom(room);
+            seatRepository.save(seat);
+        }
+
+        for(int i=1;i<=8;i++){
+            Seat seat = new Seat();
+            seat.setName("B"+i);
+            seat.setRoom(room);
+            seatRepository.save(seat);
+        }
+        for(int i=1;i<=8;i++){
+            Seat seat = new Seat();
+            seat.setName("C"+i);
+            seat.setRoom(room);
+            seatRepository.save(seat);
+        }
+        for(int i=1;i<=8;i++){
+            Seat seat = new Seat();
+            seat.setName("D"+i);
+            seat.setRoom(room);
+            seatRepository.save(seat);
+        }
+        for(int i=1;i<=8;i++){
+            Seat seat = new Seat();
+            seat.setName("E"+i);
+            seat.setRoom(room);
+            seatRepository.save(seat);
+        }
+        List<User> users = userService.findAll();
+
+        if (users.isEmpty()) {
+            User admin = new User();
+            Set<Role> roles = new HashSet<>();
+            Role roleAdmin = new Role();
+            roleAdmin.setName("ROLE_CLIENT");
+            roles.add(roleAdmin);
+            admin.setFullName("Cong Huy");
+            admin.setUsername("huync21@gmail.com");
+            admin.setPassword("123");
+            admin.setRoles(roles);
+            userService.save(admin);
+         }
 
         List<Movie> movies = movieRepository.findAll();
         if (movies.isEmpty()) {
@@ -113,7 +113,7 @@ public class CinemaBackEndApplication {
             Movie nhocTrum = addNewMovie("Nhóc Trùm: Nối Nghiệp Gia Đình","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/p/o/poster_boss_baby_2_24.12.2021_1_1_1__1.jpg",
                     "Nhóc trùm Ted giờ đây đã trở thành một triệu phú nổi tiếng trong khi Tim lại có một cuộc sống đơn giản bên vợ anh Carol và hai cô con gái nhỏ yêu dấu. Mỗi mùa Giáng sinh tới, cả Tina và Tabitha đều mong được gặp chú Ted",
                     "Nhóc trùm Ted giờ đây đã trở thành một triệu phú nổi tiếng trong khi Tim lại có một cuộc sống đơn giản bên vợ anh Carol và hai cô con gái nhỏ yêu dấu. Mỗi mùa Giáng sinh tới, cả Tina và Tabitha đều mong được gặp chú Ted nhưng dường như hai anh em nhà Templeton nay đã không còn gần gũi như xưa. Nhưng bất ngờ thay khi Ted lại có màn tái xuất không thể hoành tráng hơn khi đáp thẳng máy bay trực thăng tới nhà Tim trước sự ngỡ ngàng của cả gia đình.",
-                    "https://scontent-sin6-3.xx.fbcdn.net/v/t1.15752-9/266631693_4703963403044964_3186366444621545031_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=PZUaW3ze910AX_dCmWG&tn=1IgLGfjKXU7KNzCP&_nc_ht=scontent-sin6-3.xx&oh=03_AVJib4-shv17dFXIA2l2TVbTcYez_uxoolsNlRFERG7z4w&oe=61E9DEA1",
+                    "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/r/s/rsz_dr-strange-980x448.jpg",
                     "Tom McGrath","Amy Sedaris, Jeff Goldblum, James Marsden",
                     "Hoạt Hình",LocalDate.parse("24/12/2021",formatter),
                     105,"https://www.youtube.com/embed/Lv8nL2q8yRI",
@@ -163,7 +163,7 @@ public class CinemaBackEndApplication {
             Movie nguoiNhen = addNewMovie("Người Nhện: Không Còn Nhà","https://www.cgv.vn/media/catalog/product/cache/1/small_image/240x388/dd828b13b1cb77667d034d5f59a82eb6/s/n/snwh_poster_bluemontage_4x5fb_1__1.jpg"
                     ,"Đa vũ trụ được mở ra, những kẻ phản diện nào sẽ trạm chán spidey, cùng đón xem nhá",
                     "Lần đầu tiên trong lịch sử điện ảnh của Người Nhện, thân phận người hàng xóm thân thiện bị lật mở, khiến trách nhiệm làm một Siêu Anh Hùng xung đột với cuộc sống bình thường và đặt người anh quan tâm nhất vào tình thế nguy hiểm. Khi anh nhờ đến giúp đỡ của Doctor Strange để khôi phục lại bí mật, phép thuật đã gây ra lỗ hổng thời không, giải phóng những ác nhân mạnh mẽ nhất từng đối đầu với Người Nhện từ mọi vũ trụ. Bây giờ, Peter sẽ phải vượt qua thử thách lớn nhất của mình, nó sẽ thay đổi không chỉ tương lai của chính anh mà còn là tương lai của cả Đa Vũ Trụ."
-                    ,"https://scontent-sin6-2.xx.fbcdn.net/v/t1.15752-9/262340222_703558363874342_7416936818287635017_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_ohc=kgxsskqjaGMAX-fvrSm&_nc_ht=scontent-sin6-2.xx&oh=03_AVI4rg87OK9nazDSK_CvkOQobdA9iqv9SQW2-HA54qEKWg&oe=61ECC9EE",
+                    ,"https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/r/s/rsz_dr-strange-980x448.jpg",
                     "Jon Watts","Tom Holland, Zendaya, Benedict Cumberbatch, Jacob Batalon, Jon Favreau","Hành Động, Phiêu Lưu",
                     LocalDate.parse("17/12/2021",formatter),
                     149,"https://www.youtube.com/embed/daHCu_jU5mQ",
